@@ -225,3 +225,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
 
 })();
+var button = document.querySelector('.menu__button');
+var menu = document.querySelector('.menu__body');
+var close = document.querySelector('.menu__header button');
+var overlay = document.querySelector('.menu__overlay');
+
+function showMenu() {
+	button.setAttribute('hidden', '');
+	menu.removeAttribute('hidden');
+	overlay.removeAttribute('hidden');
+};
+
+function hideMenu() {
+	menu.setAttribute('hidden', '');
+	overlay.setAttribute('hidden', '');
+	button.removeAttribute('hidden');
+};
+
+button.addEventListener('click', showMenu);
+close.addEventListener('click', hideMenu);
+overlay.addEventListener('click', hideMenu);
