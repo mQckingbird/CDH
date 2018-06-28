@@ -244,4 +244,4 @@ function hideMenu() {
 
 button.addEventListener('click', showMenu);
 close.addEventListener('click', hideMenu);
-overlay.addEventListener('click', hideMenu);
+overlay.addEventListener('click', hideMenu); 
