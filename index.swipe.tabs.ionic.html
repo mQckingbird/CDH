@@ -1,0 +1,128 @@
+
+<!DOCTYPE html><html lang='en' class=''>
+<head>
+
+<style class="cp-pen-styles">/* accommodate tabs height */
+#pw-event ion-content {
+    margin-bottom: 48px;
+}
+
+/* adjust container heights to fill container */
+#pw-event .scroll,
+#pw-event .slider {
+    height: 100%; 
+}</style></head><body>
+<html ng-app="ionicApp">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+      <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Cambio de Hábito</title>
+
+  <link href="http://code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
+   <link rel="stylesheet" href="style/base.css">
+  <script src="http://code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
+</head>
+
+<body>
+<div id="cargandocdh" class="loading-page" style="width:100%; position:fixed; overflow:hidden; top:0; z-index:9999;">
+
+             
+                <div class="counter">
+                  <p>iniciando</p>
+                  <h1 id="h1counter">0%
+                    <!--
+                    h1.abs loading
+                    h1.abs.color loading
+                    -->
+                  </h1>
+                  <hr id="hrcounter"/>
+                </div>
+      </div>
+  <ion-nav-bar class="bar-positive">
+    <ion-nav-back-button>
+    </ion-nav-back-button>
+  </ion-nav-bar>
+
+  <ion-nav-view></ion-nav-view>
+
+  <script id="templates/event.html" type="text/ng-template">
+    <ion-view view-title="Event" id="pw-event">
+      <ion-content has-header="true" has-tabs="true" padding="true">
+        <ion-slide-box show-pager="false" on-slide-changed="slideChanged(index)" active-slide="activeSlide">
+          <ion-slide>
+            <div ng-include="'views/tasks.html'" onload="loaded = true"></div>
+          </ion-slide>
+          <ion-slide>
+            <ng-include src="'views/schedule.html'"></ng-include>
+          </ion-slide>
+          <ion-slide>
+            <h1>3</h1>
+          </ion-slide>
+          <ion-slide>
+            <h1>4</h1>
+          </ion-slide>
+          <ion-slide>
+            <h1>5</h1>
+          </ion-slide>
+        </ion-slide-box>
+      </ion-content>
+      <ion-tabs class="tabs-calm tabs-icon-only">
+        <ion-tab title="Description" icon-on="ion-document" icon-off="ion-document" ng-click="setSlide(0);">
+        </ion-tab>
+        <ion-tab title="Schedule" icon-on="ion-calendar" icon-off="ion-calendar" ng-click="setSlide(1);">
+        </ion-tab>
+        <ion-tab title="Location" icon-on="ion-map" icon-off="ion-map" ng-click="setSlide(2);">
+        </ion-tab>
+        <ion-tab title="Attending" icon-on="ion-clipboard" icon-off="ion-clipboard" ng-click="setSlide(3);">
+        </ion-tab>
+        <ion-tab title="Comments" icon-on="ion-chatboxes" icon-off="ion-chatboxes" ng-click="setSlide(4);">
+        </ion-tab>
+      </ion-tabs>
+    </ion-view>
+  </script>
+
+</body>
+
+</html>
+
+
+<script >angular.module('ionicApp', ['ionic'])
+
+.config(function($stateProvider, $urlRouterProvider) {
+
+  $stateProvider
+
+    .state('event', {
+    url: "/event",
+    templateUrl: "templates/event.html",
+    controller: "EventController",
+    controllerAs: "eventCtrl"
+  });
+
+  $urlRouterProvider.otherwise("/event");
+
+}).controller('EventController', ['$scope', '$state', '$ionicTabsDelegate', '$ionicSlideBoxDelegate', function($scope, $state, $ionicTabsDelegate, $ionicSlideBoxDelegate) {
+  $scope.$on('$includeContentLoaded', function(event, target){
+          console.log(event);  //this $includeContentLoaded event object
+          console.log(target); //path to the included resource, 'snippet.html' in this case
+        });
+  // NOTE: Not sure how to get $state to work in CodePen
+   $scope.currentSlide = ($state.params.hasOwnProperty('slide')) ? $state.params.slide : 0;
+  $scope.activeSlide = 3;
+
+  $scope.slideChanged = function(index) {
+    $ionicTabsDelegate.select(index);
+  };
+
+  $scope.setSlide = function(index) {
+    $ionicSlideBoxDelegate.slide(index);
+  };
+
+}]);
+//# sourceURL=pen.js
+</script>
+</body></html>
