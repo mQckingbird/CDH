@@ -1229,7 +1229,7 @@ function setup_compy_form(){
 $(document).ready(setup_compy_form);
 
 
-var page = 1;
+  var page = 1;
   var currentHour = 10;
   var previousHour = null;
   var minute = 0;
