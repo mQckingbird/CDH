@@ -1227,3 +1227,74 @@ function setup_compy_form(){
 }
 
 $(document).ready(setup_compy_form);
+
+
+var page = 1;
+  var currentHour = 10;
+  var previousHour = null;
+  var minute = 0;
+	var popoverVisible = false;
+
+  function showPopover() {
+    if (popoverVisible) {
+      return null;
+    }
+    
+    $('.fi-popover, .page-1')
+      .removeClass('inactive')
+      .addClass('active');
+
+    $('.fi-button.form')
+      .addClass('active');
+    
+    popoverVisible = true;
+  }
+
+  function closePopover() {
+    $('.fi-popover')
+      .removeClass('active')
+      .addClass('inactive');
+
+    $('.fi-button.form')
+      .removeClass('active');
+
+    $('.fi-page').removeClass('active').addClass('inactive');
+
+    page = 1;
+    
+    popoverVisible = false;
+  }
+
+  function nextPage() {
+    $('.page-' + page++).removeClass('active').addClass('inactive');
+    $('.page-' + page).removeClass('inactive').addClass('active');
+
+    if (!(page % 2)) {
+      setTimeout(nextPage, 3000);
+    }
+  }
+
+  function changeHour(amount) {
+    pastHour = currentHour;
+    currentHour = currentHour || 24;
+    currentHour += amount;
+    currentHour %= 24;
+
+    $currentHour = $('<div/>')
+      .addClass('fi-hour-current')
+      .html((currentHour < 10 ? '0' : '') + currentHour);
+
+    $pastHour = $('<div/>')
+      .addClass('fi-hour-past')
+      .html((pastHour < 10 ? '0' : '') + pastHour);
+
+    $('.page-1 .fi-hour').html('')
+      .append($currentHour)
+      .append($pastHour)
+      .removeClass('earlier later')
+      .addClass(pastHour < currentHour ? 'later' : 'earlier');
+
+    $('.page-2 .fi-hour-current').html((currentHour < 10 ? '0' : '') + currentHour);
+  }
+
+  changeHour(0);

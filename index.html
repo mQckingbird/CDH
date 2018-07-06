@@ -371,7 +371,203 @@ h3 {
       </div>
 
       <div id='save'>
+            <div class="fi-popover-container">    
+    <button class="fi-button form" onclick="showPopover()"><span>Make Appointment</span></button>
+    <div class="fi-popover inactive">
+      <!-- Page 1 -->
+      <div class="fi-page page-1 active">
+        <header class="fi-header">
+          <button class="fi-button previous"></button>
+          <div class="fi-month">November</div>
+          <button class="fi-button next"></button>
+        </header>
+        <div class="fi-week">
+          <div class="fi-weekday active">
+            <div class="fi-date">5</div>
+            <div class="fi-day">Mon</div>
+          </div>
+          <div class="fi-weekday">
+            <div class="fi-date">6</div>
+            <div class="fi-day">Tues</div>
+          </div>
+          <div class="fi-weekday">
+            <div class="fi-date">7</div>
+            <div class="fi-day">Wed</div>
+          </div>
+          <div class="fi-weekday">
+            <div class="fi-date">8</div>
+            <div class="fi-day">Thurs</div>
+          </div>
+          <div class="fi-weekday">
+            <div class="fi-date">9</div>
+            <div class="fi-day">Fri</div>
+          </div>
+        </div>
+        <div class="fi-content">
+          <button class="fi-button circle" onclick="changeHour(-1)"><i class="fa fa-angle-left"></i></button>
+          <div class="fi-time">
+            <div class="fi-hour">
+              <div class="fi-hour-current">10</div>
+              <div class="fi-hour-past"></div>
+            </div>
+            <div class="fi-minute">:30</div>
+          </div>
+          <button class="fi-button circle" onclick="changeHour(1)"><i class="fa fa-angle-right"></i></button>
+        </div>
+        <footer class="fi-footer">
+          <button class="fi-button" onclick="nextPage()">
+            <div>Next Step</div>
+          </button>
+        </footer>
+      </div>
 
+      <!-- Page 2 -->
+      <div class="fi-page page-2 inactive">
+        <header class="fi-header">
+          <h3>Great, your appointment with Goat is scheduled.</h3>
+        </header>
+        <div class="fi-content backdrop">
+          <div class="fi-date">
+            <strong>November, Friday 15th</strong>
+          </div>
+          <div class="fi-confirmation">          
+            <div class="fi-time">
+              <div class="fi-hour">
+                <div class="fi-hour-current">09</div>
+              </div>
+              <div class="fi-minute">:30</div>
+            </div>
+          </div>
+        </div>
+        <footer class="fi-footer">
+          <button class="fi-button content">
+            <div>Goat Mealcookies</div>
+            <div class="subtext">Veterinarian</div>
+          </button>
+        </footer>
+      </div>
+
+      <!-- Page 3 -->
+      <div class="fi-page page-3 inactive">
+        <header class="fi-header">
+          <h3>Share your records with Goat?</h3>
+        </header>
+        <div class="fi-content">            
+          <ul class="fi-records">
+            <li class="fi-record">
+              <input type="checkbox" name="record" id="medical_history">
+              <label for="medical_history">
+                <i class="fa fa-clipboard"></i>
+                <div>Medical History</div>
+              </label>
+            </li>
+            <li class="fi-record">
+              <input type="checkbox" name="record" id="shot_records">
+              <label for="shot_records">
+                <i class="fa fa-medkit"></i>
+                <div>Shot Records</div>
+              </label>
+            </li>
+            <li class="fi-record">
+              <input type="checkbox" name="record" id="surgery_records">
+              <label for="surgery_records">
+                <i class="fa fa-user-md"></i>
+                <div>Surgery Records</div>
+              </label>
+            </li>
+            <li class="fi-record">
+              <input type="checkbox" name="record" id="x_rays">
+              <label for="x_rays">
+                <i class="fa fa-user-times"></i>
+                <div>X-Rays</div>
+              </label>
+            </li>
+            <li class="fi-record">
+              <input type="checkbox" name="record" id="medications">
+              <label for="medications">
+                <i class="fa fa-flask"></i>
+                <div>Medications</div>
+              </label>
+            </li>
+            <li class="fi-record">
+              <input type="checkbox" name="record" id="allergies">
+              <label for="allergies">
+                <i class="fa fa-leaf"></i>
+                <div>Allergies</div>
+              </label>
+            </li>
+          </ul>
+        </div>
+        <footer class="fi-footer">
+          <button class="fi-button" onclick="nextPage()">
+            <div>Next Step</div>
+          </button>
+        </footer>
+      </div>
+
+      <!-- Page 4 -->
+      <div class="fi-page page-4 inactive">
+        <header class="fi-header">
+          <h3>Share your records with Goat?</h3>
+        </header>
+        <div class="fi-content backdrop">            
+          <div class="fi-date">
+            <strong>November, Friday 15th</strong>
+          </div>
+          <div class="fi-transfer">
+            <div class="fi-avatar">
+              <img src="https://i.imgur.com/xg1mXL7.jpg" alt="">
+            </div>
+            <div class="fi-loading">
+              <div class="fi-loading-dot"></div>
+              <div class="fi-loading-dot"></div>
+              <div class="fi-loading-dot"></div>
+              <div class="fi-loading-dot"></div>
+            </div>
+            <div class="fi-avatar">
+              <img src="https://i.imgur.com/7RDEUTW.png" alt="">
+            </div>
+          </div>
+        </div>
+        <footer class="fi-footer">
+          <button class="fi-button content">
+            <div>Please wait a few seconds while we <br>transfer your records to Goat.</div>
+          </button>
+        </footer>
+      </div>
+
+      <!-- Page 5 -->
+      <div class="fi-page page-5 inactive">
+        <header class="fi-header">
+          <h1>You're all set.</h1>
+        </header>
+        <div class="fi-content">
+          <div class="fi-info">
+            Add your appointment to your calendar.
+          </div>
+          <div class="fi-iphone">
+            <div class="fi-iphone-screen">
+              <div class="fi-iphone-notification">
+                <i class="fa fa-heartbeat"></i>
+                <div>
+                  <h3>Goat Health <span class="subtext">now</span></h3>
+                  <div>Your appointment with Goat</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fi-footer" onclick="closePopover()">
+          <button class="fi-button">
+            <div>Add to Calendar</div>
+          </button>
+          <button class="fi-button">
+            <div>Not Now</div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
       <form novalidate>
    <div class="form-inner">
